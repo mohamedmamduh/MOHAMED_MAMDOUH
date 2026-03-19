@@ -28,9 +28,9 @@ const AnimatedCounter = ({ from, to, label, icon, delay }: CounterProps) => {
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay }}
-      className="glass-card p-6 flex flex-col items-center text-center gap-3"
+      className="glass-card p-6 flex flex-col items-center text-center gap-3 group hover:glow-border transition-all duration-300"
     >
-      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
         {icon}
       </div>
       <div className="space-y-1">
@@ -49,10 +49,10 @@ const AnimatedCounter = ({ from, to, label, icon, delay }: CounterProps) => {
 
 const ImpactDashboard = () => {
   const metrics = [
-    { from: "7 Days", to: "48 Hours", label: "Turnaround Time", icon: <Clock className="w-5 h-5" />, delay: 0 },
+    { from: "7 Days", to: "48 Hours", label: "Efficiency", icon: <Clock className="w-5 h-5" />, delay: 0 },
     { from: "0", to: "11,000+", label: "Repository Records", icon: <Database className="w-5 h-5" />, delay: 0.15 },
-    { from: "3 Min", to: "30 Sec", label: "Retrieval Speed", icon: <Zap className="w-5 h-5" />, delay: 0.3 },
-    { from: "—", to: "7+", label: "Stakeholders Managed", icon: <Users className="w-5 h-5" />, delay: 0.45 },
+    { from: "—", to: "80+", label: "Daily Document Flow", icon: <Zap className="w-5 h-5" />, delay: 0.3 },
+    { from: "—", to: "7+", label: "Key Entities Managed", icon: <Users className="w-5 h-5" />, delay: 0.45 },
   ];
 
   return (
