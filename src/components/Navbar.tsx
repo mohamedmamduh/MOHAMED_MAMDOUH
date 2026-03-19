@@ -5,8 +5,10 @@ const links = [
   { label: "Impact", href: "#impact" },
   { label: "Case Studies", href: "#case-studies" },
   { label: "Tech Stack", href: "#tech" },
+  { label: "Certificates", href: "#certificates" },
+  { label: "Partners", href: "#partners" },
   { label: "Career", href: "#career" },
-  { label: "Education", href: "#education" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 const Navbar = () => {
@@ -20,9 +22,9 @@ const Navbar = () => {
         </a>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-5">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a key={l.href} href={l.href} className="text-xs text-muted-foreground hover:text-foreground transition-colors">
               {l.label}
             </a>
           ))}
