@@ -1,35 +1,71 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Database, Bot, BarChart3, FileText, Terminal, Table2, LayoutDashboard, HardDrive, FileType } from "lucide-react";
+
+// EDMS
+import aconexIcon from "@/assets/software/aconex.png";
+import sharePointIcon from "@/assets/software/share-point.png";
+
+// Automation
+import pythonIcon from "@/assets/software/python.png";
+import powershellIcon from "@/assets/software/powershell.png";
+import bulkPdfIcon from "@/assets/software/bulk-pdf.png";
+import bulkRenameIcon from "@/assets/software/bulk_rename_utility-app-logo.png";
+import cmdIcon from "@/assets/software/command-prompt-.png";
+
+// Data Analytics
+import excelIcon from "@/assets/software/excel.png";
+import powerBiIcon from "@/assets/software/power-bi.png";
+import tableauIcon from "@/assets/software/tableau.png";
+import sqlIcon from "@/assets/software/sql.png";
+
+// Additional Software
+import adobeAcrobatIcon from "@/assets/software/adobe_acrobat-dc-pro.png";
+import adobeCCIcon from "@/assets/software/adobe-creative-cloud.png";
+import wordIcon from "@/assets/software/m365-word.avif";
+import accessIcon from "@/assets/software/microsoft_office_access.png";
+import powerpointIcon from "@/assets/software/microsoft_office_powerpoint.png";
+import autocadIcon from "@/assets/software/auto-cad.png";
 
 const categories = [
   {
     title: "EDMS",
-    icon: <Database className="w-5 h-5" />,
+    description: "Document Management Systems",
     tools: [
-      { name: "Oracle Aconex", note: "Accredited Professional", icon: FileText },
-      { name: "SharePoint", icon: HardDrive },
+      { name: "Oracle Aconex", note: "Accredited Professional", icon: aconexIcon },
+      { name: "SharePoint", icon: sharePointIcon },
+      { name: "Adobe Acrobat Pro", icon: adobeAcrobatIcon },
     ],
   },
   {
     title: "Automation",
-    icon: <Bot className="w-5 h-5" />,
+    description: "Scripting & Batch Processing",
     tools: [
-      { name: "Python", icon: Terminal },
-      { name: "VBA", icon: Table2 },
-      { name: "PowerShell", icon: Terminal },
-      { name: "Bulk PDF", icon: FileType },
-      { name: "Bulk Rename Utility", icon: FileText },
+      { name: "Python", icon: pythonIcon },
+      { name: "PowerShell", icon: powershellIcon },
+      { name: "Command Prompt", icon: cmdIcon },
+      { name: "Bulk PDF", icon: bulkPdfIcon },
+      { name: "Bulk Rename Utility", icon: bulkRenameIcon },
     ],
   },
   {
     title: "Data Analytics",
-    icon: <BarChart3 className="w-5 h-5" />,
+    description: "Analysis & Visualization",
     tools: [
-      { name: "Excel", note: "VBA / Power Query", icon: Table2 },
-      { name: "Power BI", icon: LayoutDashboard },
-      { name: "Tableau", icon: BarChart3 },
-      { name: "SQL", icon: Database },
+      { name: "Excel", note: "VBA / Power Query", icon: excelIcon },
+      { name: "Power BI", icon: powerBiIcon },
+      { name: "Tableau", icon: tableauIcon },
+      { name: "SQL", icon: sqlIcon },
+    ],
+  },
+  {
+    title: "Office & Design",
+    description: "Productivity & Drafting",
+    tools: [
+      { name: "Word", icon: wordIcon },
+      { name: "PowerPoint", icon: powerpointIcon },
+      { name: "Access", icon: accessIcon },
+      { name: "Adobe CC", icon: adobeCCIcon },
+      { name: "AutoCAD", icon: autocadIcon },
     ],
   },
 ];
@@ -40,44 +76,44 @@ const TechStack = () => {
 
   return (
     <section className="py-20 px-4" id="tech" ref={ref}>
-      <div className="container max-w-5xl mx-auto">
+      <div className="container max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="section-heading">Technical <span className="gradient-text">Stack</span></h2>
-          <p className="section-subheading mx-auto">Tools and platforms I work with daily</p>
+          <h2 className="section-heading">Technical <span className="gradient-text">Ecosystem</span></h2>
+          <p className="section-subheading mx-auto">Software & tools powering my document control workflow</p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {categories.map((cat, i) => (
             <motion.div
               key={cat.title}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="glass-card p-6"
+              transition={{ duration: 0.5, delay: i * 0.12 }}
+              className="glass-card p-5"
             >
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                  {cat.icon}
-                </div>
-                <h3 className="font-bold text-foreground">{cat.title}</h3>
+              <div className="mb-4">
+                <h3 className="font-bold text-foreground text-lg">{cat.title}</h3>
+                <p className="text-xs text-muted-foreground">{cat.description}</p>
               </div>
               <div className="space-y-3">
-                {cat.tools.map((tool) => {
-                  const ToolIcon = tool.icon;
-                  return (
-                    <div key={tool.name} className="flex items-center justify-between group">
-                      <div className="flex items-center gap-2">
-                        <ToolIcon className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors" />
-                        <span className="text-sm text-foreground">{tool.name}</span>
-                      </div>
+                {cat.tools.map((tool) => (
+                  <div key={tool.name} className="flex items-center gap-3 group">
+                    <div className="w-9 h-9 rounded-lg bg-secondary/80 flex items-center justify-center p-1.5 group-hover:scale-110 transition-transform shrink-0">
+                      <img
+                        src={tool.icon}
+                        alt={tool.name}
+                        className="w-full h-full object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <span className="text-sm text-foreground font-medium block truncate">{tool.name}</span>
                       {tool.note && (
-                        <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary font-medium">
-                          {tool.note}
-                        </span>
+                        <span className="text-[10px] text-primary font-medium">{tool.note}</span>
                       )}
                     </div>
-                  );
-                })}
+                  </div>
+                ))}
               </div>
             </motion.div>
           ))}
