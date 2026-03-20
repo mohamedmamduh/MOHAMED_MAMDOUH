@@ -59,13 +59,13 @@ const PartnerGrid = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.35, delay: i * 0.04 }}
-              className="glass-card p-4 flex flex-col items-center text-center gap-2 hover:glow-border transition-all duration-300 group"
+              className="glass-card p-4 flex flex-col items-center text-center gap-2 shadow-md hover:shadow-[0_0_20px_-5px_hsl(var(--primary)/0.2)] hover:scale-[1.08] transition-all duration-300 group relative hover:z-10"
             >
-              <div className="w-14 h-14 rounded-lg bg-secondary/50 flex items-center justify-center p-2 group-hover:scale-110 transition-transform">
+              <div className="w-14 h-14 rounded-lg bg-secondary/50 flex items-center justify-center p-2">
                 <img
                   src={partner.logo}
                   alt={partner.name}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
                   loading="lazy"
                 />
               </div>

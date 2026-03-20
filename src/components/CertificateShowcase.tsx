@@ -171,7 +171,7 @@ const CertificateShowcase = () => {
               </div>
 
               {/* Bento Grid: featured certs get col-span-2 */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
                 {group.certs.map((cert, ci) => (
                   <motion.button
                     key={`${cert.name}-${ci}`}
@@ -179,15 +179,15 @@ const CertificateShowcase = () => {
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 0.3, delay: gi * 0.1 + ci * 0.04 }}
                     onClick={() => openLightbox(cert)}
-                    className={`group cursor-pointer rounded-xl overflow-hidden border-2 border-white/10 hover:border-primary/50 bg-secondary/20 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.3)] transition-all duration-400 text-left ${
-                      cert.featured ? "sm:col-span-2 md:col-span-2" : ""
+                    className={`group cursor-pointer rounded-xl overflow-hidden border-2 border-white/10 hover:border-primary/50 bg-secondary/20 shadow-md hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.3)] transition-all duration-300 text-left hover:scale-[1.05] hover:z-10 relative ${
+                      cert.featured ? "sm:col-span-2" : ""
                     }`}
                   >
                     <div className={`overflow-hidden ${cert.featured ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
                       <img
                         src={cert.image}
                         alt={cert.name}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                        className="w-full h-full object-cover group-hover:scale-[1.15] transition-transform duration-300 ease-out"
                         loading="lazy"
                       />
                     </div>
