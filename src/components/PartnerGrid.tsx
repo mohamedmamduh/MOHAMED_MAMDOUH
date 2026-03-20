@@ -1,17 +1,45 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Building2, Landmark, Building, Crown, HardHat, Briefcase } from "lucide-react";
+
+// Stakeholder logos (dark mode versions for dark theme)
+import massGroupLogo from "@/assets/stakeholders/mass-group-logo-03.png";
+import modadLogo from "@/assets/stakeholders/modad-dark-mode.png";
+import skyAdLogo from "@/assets/stakeholders/sky-ad-dark-mode.png";
+import diaaConsultLogo from "@/assets/stakeholders/diaa-consult-dark-mode.png";
+import nbeLogo from "@/assets/stakeholders/the-national-bank-of-egypt.png";
+import banqueMisrLogo from "@/assets/stakeholders/banque-misr.png";
+import alMassarLogo from "@/assets/stakeholders/al-massar-dark-mode.png";
+import iconicLogo from "@/assets/stakeholders/iconic-dark-mode.webp";
+import blueTreeLogo from "@/assets/stakeholders/blue-tree-new-cairo-dark-mode.png";
+import designersLogo from "@/assets/stakeholders/designers-consultants.png";
+import alMassarSubLogo from "@/assets/stakeholders/al-massar-sub-consult.png";
+import alMassarSub2Logo from "@/assets/stakeholders/al-massar-sub-consult-2.png";
+import alMassarSub3Logo from "@/assets/stakeholders/al-massar-sub-consult-3.png";
+import fitOutBMLogo from "@/assets/stakeholders/fit-out-bank-misr-wesal-subcontractor.png";
+import fitOutNBELogo from "@/assets/stakeholders/fit-out-nbe-wesal-subcontractor.png";
+import alMassarSubcontractorLogo from "@/assets/stakeholders/al-massar-subcontractor.png";
 
 const partners = [
-  { name: "Egyptian Presidency", type: "Client", icon: Crown },
-  { name: "Banque Misr", type: "Client", icon: Landmark },
-  { name: "National Bank of Egypt", type: "Client", icon: Landmark },
-  { name: "SKY AD. Developments", type: "Client", icon: Building },
-  { name: "Mass Group", type: "Contractor", icon: HardHat },
-  { name: "S2A General Contracting", type: "Contractor", icon: HardHat },
-  { name: "MODAD", type: "Contractor", icon: Building2 },
-  { name: "ÖKOPLAN", type: "Consultant", icon: Briefcase },
-  { name: "DiaaConsult", type: "Consultant", icon: Briefcase },
+  // Row 1 – Major Clients
+  { name: "Banque Misr", type: "Client", logo: banqueMisrLogo },
+  { name: "National Bank of Egypt", type: "Client", logo: nbeLogo },
+  { name: "ICONIC", type: "Client", logo: iconicLogo },
+  // Row 2 – Developers
+  { name: "Mass Group", type: "Contractor", logo: massGroupLogo },
+  { name: "MODAD", type: "Developer", logo: modadLogo },
+  { name: "SKY AD", type: "Developer", logo: skyAdLogo },
+  // Row 3 – Consultants & Partners
+  { name: "DiaaConsult", type: "Consultant", logo: diaaConsultLogo },
+  { name: "Al Massar", type: "Consultant", logo: alMassarLogo },
+  { name: "Designers Consultants", type: "Consultant", logo: designersLogo },
+  // Row 4 – Sub-consultants & Subcontractors
+  { name: "Blue Tree", type: "Sub-Developer", logo: blueTreeLogo },
+  { name: "Al Massar Sub-consult", type: "Sub-consultant", logo: alMassarSubLogo },
+  { name: "Al Massar Sub-consult 2", type: "Sub-consultant", logo: alMassarSub2Logo },
+  { name: "Al Massar Sub-consult 3", type: "Sub-consultant", logo: alMassarSub3Logo },
+  { name: "Al Massar Subcontractor", type: "Subcontractor", logo: alMassarSubcontractorLogo },
+  { name: "Fit Out – Banque Misr", type: "Subcontractor", logo: fitOutBMLogo },
+  { name: "Fit Out – NBE", type: "Subcontractor", logo: fitOutNBELogo },
 ];
 
 const PartnerGrid = () => {
@@ -20,31 +48,33 @@ const PartnerGrid = () => {
 
   return (
     <section className="py-20 px-4" id="partners" ref={ref}>
-      <div className="container max-w-5xl mx-auto">
+      <div className="container max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="section-heading">Partner <span className="gradient-text">Network</span></h2>
-          <p className="section-subheading mx-auto">Clients, contractors, and consultants I've collaborated with</p>
+          <h2 className="section-heading">Trust <span className="gradient-text">Network</span></h2>
+          <p className="section-subheading mx-auto">Clients, developers, consultants, and subcontractors I've collaborated with</p>
         </div>
 
-        <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4">
-          {partners.map((partner, i) => {
-            const Icon = partner.icon;
-            return (
-              <motion.div
-                key={partner.name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="glass-card p-4 flex flex-col items-center text-center gap-2 hover:glow-border transition-all duration-300 group"
-              >
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-                  <Icon className="w-5 h-5" />
-                </div>
-                <h4 className="text-xs md:text-sm font-semibold text-foreground leading-tight">{partner.name}</h4>
-                <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">{partner.type}</span>
-              </motion.div>
-            );
-          })}
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 gap-4">
+          {partners.map((partner, i) => (
+            <motion.div
+              key={partner.name}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.35, delay: i * 0.04 }}
+              className="glass-card p-4 flex flex-col items-center text-center gap-2 hover:glow-border transition-all duration-300 group"
+            >
+              <div className="w-14 h-14 rounded-lg bg-secondary/50 flex items-center justify-center p-2 group-hover:scale-110 transition-transform">
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <h4 className="text-xs font-semibold text-foreground leading-tight">{partner.name}</h4>
+              <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">{partner.type}</span>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
