@@ -123,8 +123,15 @@ const CareerTimeline = () => {
 
                 {/* Card */}
                 <div className="ml-10 md:ml-0 md:w-1/2 glass-card p-5">
+                  {/* Company header with logo */}
                   <div className="flex items-center gap-2 text-xs text-primary font-semibold mb-1">
-                    <Building2 className="w-3.5 h-3.5" />
+                    {job.companyLogo ? (
+                      <div className="w-5 h-5 rounded bg-secondary/50 flex items-center justify-center p-0.5 shrink-0">
+                        <img src={job.companyLogo} alt={job.company} className="w-full h-full object-contain" loading="lazy" />
+                      </div>
+                    ) : (
+                      <Building2 className="w-3.5 h-3.5" />
+                    )}
                     {job.company} · {job.location}
                   </div>
                   <h3 className="font-bold text-foreground text-sm">{job.role}</h3>
@@ -142,7 +149,23 @@ const CareerTimeline = () => {
                     </p>
                   </div>
 
-                  <p className="text-xs text-muted-foreground mt-1">Client: {job.client}</p>
+                  {/* Client & Stakeholder logos row */}
+                  <div className="flex items-center gap-2 mt-2 flex-wrap">
+                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">Client:</span>
+                    {job.stakeholders.map((s) => (
+                      <div
+                        key={s.name}
+                        className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-secondary/40 border border-border/50"
+                        title={s.name}
+                      >
+                        <div className="w-5 h-5 rounded flex items-center justify-center shrink-0">
+                          <img src={s.logo} alt={s.name} className="w-full h-full object-contain" loading="lazy" />
+                        </div>
+                        <span className="text-[10px] text-foreground font-medium">{s.name}</span>
+                      </div>
+                    ))}
+                  </div>
+
                   <ul className="mt-3 space-y-1.5">
                     {job.highlights.map((h) => (
                       <li key={h} className="text-xs text-muted-foreground flex gap-2">
