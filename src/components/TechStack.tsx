@@ -97,12 +97,12 @@ const TechStack = () => {
               </div>
               <div className="space-y-3">
                 {cat.tools.map((tool) => (
-                  <div key={tool.name} className="flex items-center gap-3 group">
-                    <div className="w-9 h-9 rounded-lg bg-secondary/80 flex items-center justify-center p-1.5 group-hover:scale-110 transition-transform shrink-0">
+                  <div key={tool.name} className="flex items-center gap-3 group hover:scale-[1.05] transition-all duration-300">
+                    <div className="w-9 h-9 rounded-lg bg-secondary/80 flex items-center justify-center p-1.5 shadow-sm shrink-0">
                       <img
                         src={tool.icon}
                         alt={tool.name}
-                        className="w-full h-full object-contain"
+                        className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
                         loading="lazy"
                       />
                     </div>
