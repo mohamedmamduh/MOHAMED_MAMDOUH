@@ -171,7 +171,7 @@ const CertificateShowcase = () => {
               </div>
 
               {/* Bento Grid: featured certs get col-span-2 */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
                 {group.certs.map((cert, ci) => (
                   <motion.button
                     key={`${cert.name}-${ci}`}
@@ -179,7 +179,7 @@ const CertificateShowcase = () => {
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 0.3, delay: gi * 0.1 + ci * 0.04 }}
                     onClick={() => openLightbox(cert)}
-                    className={`group cursor-pointer rounded-xl overflow-hidden border-2 border-white/10 hover:border-primary/50 bg-secondary/20 shadow-md hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.3)] transition-all duration-300 text-left hover:scale-[1.05] hover:z-10 relative ${
+                    className={`group cursor-pointer rounded-lg overflow-hidden border border-white/10 hover:border-primary/50 bg-secondary/20 shadow-sm hover:shadow-[0_8px_30px_-5px_hsl(var(--primary)/0.3)] transition-all duration-300 text-left hover:scale-[1.18] hover:z-10 relative ${
                       cert.featured ? "sm:col-span-2" : ""
                     }`}
                   >
@@ -187,13 +187,13 @@ const CertificateShowcase = () => {
                       <img
                         src={cert.image}
                         alt={cert.name}
-                        className="w-full h-full object-cover group-hover:scale-[1.15] transition-transform duration-300 ease-out"
+                        className="w-full h-full object-cover transition-transform duration-300 ease-out"
                         loading="lazy"
                       />
                     </div>
-                    <div className="p-4">
-                      <p className="text-sm font-semibold text-foreground leading-snug line-clamp-2">{cert.name}</p>
-                      <p className="text-xs text-muted-foreground mt-1">{cert.issuer}</p>
+                    <div className="p-2.5">
+                      <p className="text-[11px] font-semibold text-foreground leading-tight line-clamp-2">{cert.name}</p>
+                      <p className="text-[10px] text-muted-foreground mt-0.5">{cert.issuer}</p>
                       {/* Sub-courses for the Google Professional Certificate */}
                       {cert.subCourses && (
                         <div className="mt-3 border-t border-border/50 pt-3">

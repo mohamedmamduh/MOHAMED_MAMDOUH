@@ -177,7 +177,7 @@ const CareerTimeline = () => {
                     {job.stakeholders.map((s) => (
                       <div
                         key={s.name}
-                        className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-secondary/40 border border-border/50"
+                        className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-secondary/40 border border-border/50 hover:scale-[1.15] transition-all duration-300 cursor-default"
                         title={s.name}
                       >
                         <div className="w-5 h-5 rounded flex items-center justify-center shrink-0">
@@ -197,7 +197,7 @@ const CareerTimeline = () => {
                       {job.certBadges.map((badge) => (
                         <div
                           key={badge.name}
-                          className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-primary/10 border border-primary/20"
+                          className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-primary/10 border border-primary/20 hover:scale-[1.15] transition-all duration-300 cursor-default"
                           title={badge.name}
                         >
                           <div className="w-5 h-5 rounded-sm overflow-hidden shrink-0">
