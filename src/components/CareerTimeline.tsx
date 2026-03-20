@@ -4,16 +4,33 @@ import { Building2, Briefcase } from "lucide-react";
 
 import alMassarLogo from "@/assets/stakeholders/al-massar-dark-mode.png";
 import blueTreeLogo from "@/assets/stakeholders/blue-tree-new-cairo-dark-mode.png";
+import massGroupLogo from "@/assets/stakeholders/mass-group-logo-03.png";
+import modadLogo from "@/assets/stakeholders/modad-dark-mode.png";
+import skyAdLogo from "@/assets/stakeholders/sky-ad-dark-mode.png";
+import nbeLogo from "@/assets/stakeholders/the-national-bank-of-egypt.png";
+import banqueMisrLogo from "@/assets/stakeholders/banque-misr.png";
+import diaaConsultLogo from "@/assets/stakeholders/diaa-consult-dark-mode.png";
+import okoplanLogo from "@/assets/stakeholders/al-massar-sub-consult.png";
+
+interface StakeholderLogo {
+  name: string;
+  logo: string;
+}
 
 const jobs = [
   {
     company: "Mass Group",
+    companyLogo: massGroupLogo,
     location: "New Administrative Capital",
     role: "Senior Document Control Specialist",
     project: "Al Massar (80 Villas)",
     projectLogo: alMassarLogo,
     period: "Feb 2025 – Apr 2026",
     client: "Egyptian Presidency",
+    stakeholders: [
+      { name: "DiaaConsult", logo: diaaConsultLogo },
+      { name: "ÖKOPLAN", logo: okoplanLogo },
+    ] as StakeholderLogo[],
     highlights: [
       "Managed 80+ documents/day with correct routing and revision control",
       "Coordinated approvals across 7+ stakeholders",
@@ -22,12 +39,16 @@ const jobs = [
   },
   {
     company: "S2A General Contracting",
+    companyLogo: null,
     location: "5th Settlement",
     role: "Document Control Specialist",
     project: "Blue Tree",
     projectLogo: blueTreeLogo,
     period: "Sep 2024 – Feb 2025",
     client: "SKY AD. Developments",
+    stakeholders: [
+      { name: "SKY AD", logo: skyAdLogo },
+    ] as StakeholderLogo[],
     highlights: [
       "Processed high-volume drawings and document packages",
       "Maintained accurate real-time logs for all document types",
@@ -35,12 +56,16 @@ const jobs = [
   },
   {
     company: "MODAD",
+    companyLogo: modadLogo,
     location: "El-Shorouk West",
     role: "Document Controller (Aconex)",
     project: "Fit Out Bank Misr Wesal (1)",
     projectLogo: null,
     period: "Sep 2023 – Aug 2024",
     client: "Banque Misr",
+    stakeholders: [
+      { name: "Banque Misr", logo: banqueMisrLogo },
+    ] as StakeholderLogo[],
     highlights: [
       "Submitted documents via Aconex and tracked against deadlines",
       "Followed up workflows until final approval",
@@ -48,12 +73,16 @@ const jobs = [
   },
   {
     company: "MODAD",
+    companyLogo: modadLogo,
     location: "El-Shorouk West",
     role: "Document Controller (Aconex)",
     project: "Fit Out NBE Wesal (1)",
     projectLogo: null,
     period: "Sep 2022 – Aug 2023",
     client: "National Bank of Egypt",
+    stakeholders: [
+      { name: "NBE", logo: nbeLogo },
+    ] as StakeholderLogo[],
     highlights: [
       "Controlled documentation across multiple stakeholders",
       "Set up project folders, templates, and revision control",
@@ -94,8 +123,15 @@ const CareerTimeline = () => {
 
                 {/* Card */}
                 <div className="ml-10 md:ml-0 md:w-1/2 glass-card p-5">
+                  {/* Company header with logo */}
                   <div className="flex items-center gap-2 text-xs text-primary font-semibold mb-1">
-                    <Building2 className="w-3.5 h-3.5" />
+                    {job.companyLogo ? (
+                      <div className="w-5 h-5 rounded bg-secondary/50 flex items-center justify-center p-0.5 shrink-0">
+                        <img src={job.companyLogo} alt={job.company} className="w-full h-full object-contain" loading="lazy" />
+                      </div>
+                    ) : (
+                      <Building2 className="w-3.5 h-3.5" />
+                    )}
                     {job.company} · {job.location}
                   </div>
                   <h3 className="font-bold text-foreground text-sm">{job.role}</h3>
@@ -113,7 +149,23 @@ const CareerTimeline = () => {
                     </p>
                   </div>
 
-                  <p className="text-xs text-muted-foreground mt-1">Client: {job.client}</p>
+                  {/* Client & Stakeholder logos row */}
+                  <div className="flex items-center gap-2 mt-2 flex-wrap">
+                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">Client:</span>
+                    {job.stakeholders.map((s) => (
+                      <div
+                        key={s.name}
+                        className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-secondary/40 border border-border/50"
+                        title={s.name}
+                      >
+                        <div className="w-5 h-5 rounded flex items-center justify-center shrink-0">
+                          <img src={s.logo} alt={s.name} className="w-full h-full object-contain" loading="lazy" />
+                        </div>
+                        <span className="text-[10px] text-foreground font-medium">{s.name}</span>
+                      </div>
+                    ))}
+                  </div>
+
                   <ul className="mt-3 space-y-1.5">
                     {job.highlights.map((h) => (
                       <li key={h} className="text-xs text-muted-foreground flex gap-2">
