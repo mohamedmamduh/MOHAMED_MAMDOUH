@@ -197,7 +197,7 @@ const CareerTimeline = () => {
                       {job.certBadges.map((badge) => (
                         <div
                           key={badge.name}
-                          className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-primary/10 border border-primary/20"
+                          className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-primary/10 border border-primary/20 hover:scale-[1.15] transition-all duration-300 cursor-default"
                           title={badge.name}
                         >
                           <div className="w-5 h-5 rounded-sm overflow-hidden shrink-0">
