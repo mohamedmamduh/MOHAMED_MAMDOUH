@@ -172,21 +172,21 @@ const CareerTimeline = () => {
                   </div>
 
                   {/* Client & Stakeholder logos row */}
-                  <div className="flex items-center gap-2 mt-2 flex-wrap">
-                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">Client:</span>
-                    {job.stakeholders.map((s) =>
-                  <div
-                    key={s.name}
-                    className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-secondary/40 border border-border/50 hover:scale-[1.15] transition-all duration-300 cursor-default"
-                    title={s.name}>
-                    
-                        <div className="w-5 h-5 rounded flex items-center justify-center shrink-0">
-                          <img src={s.logo} alt={s.name} className="w-full h-full object-contain" loading="lazy" />
-                        </div>
-                        <span className="text-[10px] text-foreground font-medium">{s.name}</span>
-                      </div>
-                  )}
-                  </div>
+                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
 
                   {/* Certification badges */}
                   {job.certBadges.length > 0 &&
