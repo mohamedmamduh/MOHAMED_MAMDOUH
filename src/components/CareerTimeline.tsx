@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Building2, Briefcase } from "lucide-react";
+import { Building2, Briefcase, Award } from "lucide-react";
 
 import alMassarLogo from "@/assets/stakeholders/al-massar-dark-mode.png";
 import blueTreeLogo from "@/assets/stakeholders/blue-tree-new-cairo-dark-mode.png";
@@ -12,9 +12,18 @@ import banqueMisrLogo from "@/assets/stakeholders/banque-misr.png";
 import diaaConsultLogo from "@/assets/stakeholders/diaa-consult-dark-mode.png";
 import okoplanLogo from "@/assets/stakeholders/al-massar-sub-consult.png";
 
+// Certification badges
+import aconexBadge from "@/assets/certificates/aconex-accredited-professional-badge.jpg";
+import googleProfessional from "@/assets/certificates/certificate-google-google-data-analytics-professional-certificate.jpeg";
+
 interface StakeholderLogo {
   name: string;
   logo: string;
+}
+
+interface CertBadge {
+  name: string;
+  image: string;
 }
 
 const jobs = [
@@ -31,6 +40,10 @@ const jobs = [
       { name: "DiaaConsult", logo: diaaConsultLogo },
       { name: "ÖKOPLAN", logo: okoplanLogo },
     ] as StakeholderLogo[],
+    certBadges: [
+      { name: "Aconex Accredited", image: aconexBadge },
+      { name: "Google Data Analytics", image: googleProfessional },
+    ] as CertBadge[],
     highlights: [
       "Managed 80+ documents/day with correct routing and revision control",
       "Coordinated approvals across 7+ stakeholders",
@@ -49,6 +62,9 @@ const jobs = [
     stakeholders: [
       { name: "SKY AD", logo: skyAdLogo },
     ] as StakeholderLogo[],
+    certBadges: [
+      { name: "Google Data Analytics", image: googleProfessional },
+    ] as CertBadge[],
     highlights: [
       "Processed high-volume drawings and document packages",
       "Maintained accurate real-time logs for all document types",
@@ -66,6 +82,9 @@ const jobs = [
     stakeholders: [
       { name: "Banque Misr", logo: banqueMisrLogo },
     ] as StakeholderLogo[],
+    certBadges: [
+      { name: "Aconex Accredited", image: aconexBadge },
+    ] as CertBadge[],
     highlights: [
       "Submitted documents via Aconex and tracked against deadlines",
       "Followed up workflows until final approval",
@@ -83,6 +102,9 @@ const jobs = [
     stakeholders: [
       { name: "NBE", logo: nbeLogo },
     ] as StakeholderLogo[],
+    certBadges: [
+      { name: "Aconex Accredited", image: aconexBadge },
+    ] as CertBadge[],
     highlights: [
       "Controlled documentation across multiple stakeholders",
       "Set up project folders, templates, and revision control",
@@ -165,6 +187,27 @@ const CareerTimeline = () => {
                       </div>
                     ))}
                   </div>
+
+                  {/* Certification badges */}
+                  {job.certBadges.length > 0 && (
+                    <div className="flex items-center gap-2 mt-2.5 flex-wrap">
+                      <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium flex items-center gap-1">
+                        <Award className="w-3 h-3" /> Certs:
+                      </span>
+                      {job.certBadges.map((badge) => (
+                        <div
+                          key={badge.name}
+                          className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-primary/10 border border-primary/20"
+                          title={badge.name}
+                        >
+                          <div className="w-5 h-5 rounded-sm overflow-hidden shrink-0">
+                            <img src={badge.image} alt={badge.name} className="w-full h-full object-cover" loading="lazy" />
+                          </div>
+                          <span className="text-[10px] text-primary font-medium">{badge.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
 
                   <ul className="mt-3 space-y-1.5">
                     {job.highlights.map((h) => (

@@ -1,6 +1,6 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Award } from "lucide-react";
 
 // Google Certificates
 import googleCapstone from "@/assets/certificates/certificate-google-data-analytics-capstone-complete-a-case-study.jpeg";
@@ -106,13 +106,17 @@ const CertificateShowcase = () => {
 
   return (
     <section className="py-20 px-4" id="certificates" ref={ref}>
-      <div className="container max-w-6xl mx-auto">
-        <div className="text-center mb-12">
+      <div className="container max-w-7xl mx-auto">
+        <div className="text-center mb-14">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold mb-4">
+            <Award className="w-3.5 h-3.5" />
+            {allCerts.length} Professional Certifications
+          </div>
           <h2 className="section-heading">Wall of <span className="gradient-text">Excellence</span></h2>
-          <p className="section-subheading mx-auto">{allCerts.length} professional certifications from world-class institutions</p>
+          <p className="section-subheading mx-auto">Verified credentials from world-class institutions — click any certificate for full view</p>
         </div>
 
-        <div className="space-y-10">
+        <div className="space-y-14">
           {groups.map((group, gi) => (
             <motion.div
               key={group.issuer}
@@ -120,13 +124,13 @@ const CertificateShowcase = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: gi * 0.1 }}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className={`w-8 h-1 rounded-full bg-gradient-to-r ${group.color}`} />
-                <h3 className="text-lg font-bold text-foreground">{group.issuer}</h3>
-                <span className="text-xs text-muted-foreground">({group.certs.length})</span>
+              <div className="flex items-center gap-3 mb-6">
+                <div className={`w-10 h-1.5 rounded-full bg-gradient-to-r ${group.color}`} />
+                <h3 className="text-xl font-bold text-foreground">{group.issuer}</h3>
+                <span className="text-sm text-muted-foreground font-medium">({group.certs.length})</span>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
                 {group.certs.map((cert, ci) => (
                   <motion.button
                     key={cert.name}
@@ -134,19 +138,19 @@ const CertificateShowcase = () => {
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 0.3, delay: gi * 0.1 + ci * 0.04 }}
                     onClick={() => openLightbox(cert)}
-                    className="glass-card overflow-hidden group cursor-pointer hover:glow-border transition-all duration-300"
+                    className="group cursor-pointer rounded-xl overflow-hidden border-2 border-white/10 hover:border-primary/50 bg-secondary/20 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.3)] transition-all duration-400"
                   >
-                    <div className="aspect-[4/3] overflow-hidden bg-secondary/30">
+                    <div className="aspect-[4/3] overflow-hidden">
                       <img
                         src={cert.image}
                         alt={cert.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                         loading="lazy"
                       />
                     </div>
-                    <div className="p-2.5">
-                      <p className="text-[11px] font-semibold text-foreground leading-tight line-clamp-2">{cert.name}</p>
-                      <p className="text-[10px] text-muted-foreground mt-0.5">{cert.issuer}</p>
+                    <div className="p-4 text-left">
+                      <p className="text-sm font-semibold text-foreground leading-snug line-clamp-2">{cert.name}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{cert.issuer}</p>
                     </div>
                   </motion.button>
                 ))}
@@ -170,7 +174,7 @@ const CertificateShowcase = () => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center"
+              className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -182,22 +186,22 @@ const CertificateShowcase = () => {
 
               <button
                 onClick={() => navigate(-1)}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-10 h-10 rounded-full bg-secondary/80 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 rounded-full bg-secondary/80 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-6 h-6" />
               </button>
 
               <button
                 onClick={() => navigate(1)}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 rounded-full bg-secondary/80 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 rounded-full bg-secondary/80 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-6 h-6" />
               </button>
 
               <img
                 src={allCerts[lightboxIndex].image}
                 alt={allCerts[lightboxIndex].name}
-                className="max-h-[75vh] w-auto rounded-xl border border-border object-contain"
+                className="max-h-[75vh] w-auto rounded-xl border-2 border-white/10 object-contain shadow-2xl"
               />
 
               <div className="mt-4 text-center">
