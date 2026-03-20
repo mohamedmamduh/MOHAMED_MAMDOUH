@@ -2,12 +2,16 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Building2, Briefcase } from "lucide-react";
 
+import alMassarLogo from "@/assets/stakeholders/al-massar-dark-mode.png";
+import blueTreeLogo from "@/assets/stakeholders/blue-tree-new-cairo-dark-mode.png";
+
 const jobs = [
   {
     company: "Mass Group",
     location: "New Administrative Capital",
     role: "Senior Document Control Specialist",
-    project: "Al Massar 80 Villas Project",
+    project: "Al Massar (80 Villas)",
+    projectLogo: alMassarLogo,
     period: "Feb 2025 – Apr 2026",
     client: "Egyptian Presidency",
     highlights: [
@@ -20,7 +24,8 @@ const jobs = [
     company: "S2A General Contracting",
     location: "5th Settlement",
     role: "Document Control Specialist",
-    project: "Blue Tree Project",
+    project: "Blue Tree",
+    projectLogo: blueTreeLogo,
     period: "Sep 2024 – Feb 2025",
     client: "SKY AD. Developments",
     highlights: [
@@ -33,6 +38,7 @@ const jobs = [
     location: "El-Shorouk West",
     role: "Document Controller (Aconex)",
     project: "Fit Out Bank Misr Wesal (1)",
+    projectLogo: null,
     period: "Sep 2023 – Aug 2024",
     client: "Banque Misr",
     highlights: [
@@ -45,6 +51,7 @@ const jobs = [
     location: "El-Shorouk West",
     role: "Document Controller (Aconex)",
     project: "Fit Out NBE Wesal (1)",
+    projectLogo: null,
     period: "Sep 2022 – Aug 2023",
     client: "National Bank of Egypt",
     highlights: [
@@ -92,9 +99,20 @@ const CareerTimeline = () => {
                     {job.company} · {job.location}
                   </div>
                   <h3 className="font-bold text-foreground text-sm">{job.role}</h3>
-                  <p className="text-xs text-muted-foreground flex items-center gap-1.5 mt-0.5">
-                    <Briefcase className="w-3 h-3" /> {job.project} · {job.period}
-                  </p>
+
+                  {/* Project badge with logo */}
+                  <div className="flex items-center gap-2 mt-1.5">
+                    {job.projectLogo && (
+                      <div className="w-7 h-7 rounded bg-secondary/50 flex items-center justify-center p-0.5 shrink-0">
+                        <img src={job.projectLogo} alt={job.project} className="w-full h-full object-contain" loading="lazy" />
+                      </div>
+                    )}
+                    <p className="text-xs text-muted-foreground flex items-center gap-1.5">
+                      <Briefcase className="w-3 h-3 shrink-0" />
+                      <span>Project: <span className="text-foreground font-medium">{job.project}</span> · {job.period}</span>
+                    </p>
+                  </div>
+
                   <p className="text-xs text-muted-foreground mt-1">Client: {job.client}</p>
                   <ul className="mt-3 space-y-1.5">
                     {job.highlights.map((h) => (
