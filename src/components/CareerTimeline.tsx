@@ -4,16 +4,33 @@ import { Building2, Briefcase } from "lucide-react";
 
 import alMassarLogo from "@/assets/stakeholders/al-massar-dark-mode.png";
 import blueTreeLogo from "@/assets/stakeholders/blue-tree-new-cairo-dark-mode.png";
+import massGroupLogo from "@/assets/stakeholders/mass-group-logo-03.png";
+import modadLogo from "@/assets/stakeholders/modad-dark-mode.png";
+import skyAdLogo from "@/assets/stakeholders/sky-ad-dark-mode.png";
+import nbeLogo from "@/assets/stakeholders/the-national-bank-of-egypt.png";
+import banqueMisrLogo from "@/assets/stakeholders/banque-misr.png";
+import diaaConsultLogo from "@/assets/stakeholders/diaa-consult-dark-mode.png";
+import okoplanLogo from "@/assets/stakeholders/al-massar-sub-consult.png";
+
+interface StakeholderLogo {
+  name: string;
+  logo: string;
+}
 
 const jobs = [
   {
     company: "Mass Group",
+    companyLogo: massGroupLogo,
     location: "New Administrative Capital",
     role: "Senior Document Control Specialist",
     project: "Al Massar (80 Villas)",
     projectLogo: alMassarLogo,
     period: "Feb 2025 – Apr 2026",
     client: "Egyptian Presidency",
+    stakeholders: [
+      { name: "DiaaConsult", logo: diaaConsultLogo },
+      { name: "ÖKOPLAN", logo: okoplanLogo },
+    ] as StakeholderLogo[],
     highlights: [
       "Managed 80+ documents/day with correct routing and revision control",
       "Coordinated approvals across 7+ stakeholders",
@@ -22,12 +39,16 @@ const jobs = [
   },
   {
     company: "S2A General Contracting",
+    companyLogo: null,
     location: "5th Settlement",
     role: "Document Control Specialist",
     project: "Blue Tree",
     projectLogo: blueTreeLogo,
     period: "Sep 2024 – Feb 2025",
     client: "SKY AD. Developments",
+    stakeholders: [
+      { name: "SKY AD", logo: skyAdLogo },
+    ] as StakeholderLogo[],
     highlights: [
       "Processed high-volume drawings and document packages",
       "Maintained accurate real-time logs for all document types",
@@ -35,12 +56,16 @@ const jobs = [
   },
   {
     company: "MODAD",
+    companyLogo: modadLogo,
     location: "El-Shorouk West",
     role: "Document Controller (Aconex)",
     project: "Fit Out Bank Misr Wesal (1)",
     projectLogo: null,
     period: "Sep 2023 – Aug 2024",
     client: "Banque Misr",
+    stakeholders: [
+      { name: "Banque Misr", logo: banqueMisrLogo },
+    ] as StakeholderLogo[],
     highlights: [
       "Submitted documents via Aconex and tracked against deadlines",
       "Followed up workflows until final approval",
@@ -48,12 +73,16 @@ const jobs = [
   },
   {
     company: "MODAD",
+    companyLogo: modadLogo,
     location: "El-Shorouk West",
     role: "Document Controller (Aconex)",
     project: "Fit Out NBE Wesal (1)",
     projectLogo: null,
     period: "Sep 2022 – Aug 2023",
     client: "National Bank of Egypt",
+    stakeholders: [
+      { name: "NBE", logo: nbeLogo },
+    ] as StakeholderLogo[],
     highlights: [
       "Controlled documentation across multiple stakeholders",
       "Set up project folders, templates, and revision control",
