@@ -6,7 +6,6 @@ import TechStack from "@/components/TechStack";
 import CertificateShowcase from "@/components/CertificateShowcase";
 import PartnerGrid from "@/components/PartnerGrid";
 import CareerTimeline from "@/components/CareerTimeline";
-import Education from "@/components/Education";
 import FAQ from "@/components/FAQ";
 import ContactCTA from "@/components/ContactCTA";
 
@@ -21,7 +20,6 @@ const Index = () => {
       <CertificateShowcase />
       <PartnerGrid />
       <CareerTimeline />
-      <Education />
       <FAQ />
       <ContactCTA />
       <footer className="py-10 text-center text-xs text-muted-foreground border-t border-border">
@@ -30,5 +28,3 @@ const Index = () => {
     </div>
   );
 };
-
-export default Index;
