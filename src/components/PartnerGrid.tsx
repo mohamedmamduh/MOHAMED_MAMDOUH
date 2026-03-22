@@ -16,7 +16,7 @@ import alMassarSub3Logo from "@/assets/stakeholders/al-massar-sub-consult-3.png"
 import fitOutBMLogo from "@/assets/stakeholders/fit-out-bank-misr-wesal-subcontractor.png";
 import fitOutNBELogo from "@/assets/stakeholders/fit-out-nbe-wesal-subcontractor.png";
 import alMassarSubcontractorLogo from "@/assets/stakeholders/al-massar-subcontractor.png";
-import okoplanLogo from "@/assets/stakeholders/gc-geo-consultant.png";
+import okoplanLogo from "@/assets/stakeholders/okoplan-logo.png";
 
 const partners = [
   // Clients
