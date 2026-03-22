@@ -32,12 +32,12 @@ const partners = [
   { name: "Designers Consultants", type: "Consultant", logo: designersLogo },
   { name: "ÖKOPLAN", type: "Consultant", logo: okoplanLogo },
   // Sub-consultants & Subcontractors
-  { name: "Al Massar Sub-consult", type: "Sub-consultant", logo: alMassarSubLogo },
-  { name: "Al Massar Sub-consult 2", type: "Sub-consultant", logo: alMassarSub2Logo },
-  { name: "Al Massar Sub-consult 3", type: "Sub-consultant", logo: alMassarSub3Logo },
-  { name: "Al Massar Subcontractor", type: "Subcontractor", logo: alMassarSubcontractorLogo },
-  { name: "Fit Out – Banque Misr", type: "Subcontractor", logo: fitOutBMLogo },
-  { name: "Fit Out – NBE", type: "Subcontractor", logo: fitOutNBELogo },
+  { name: "GC GEO CONSULTANT", type: "Sub-consultant", logo: alMassarSubLogo },
+  { name: "Smart Design For Engineering Works &Information Technology", type: "Sub-consultant", logo: alMassarSub2Logo },
+  { name: "DMG Design & Project Management Group", type: "Sub-consultant", logo: alMassarSub3Logo },
+  { name: "GREEN MASS", type: "Subcontractor", logo: alMassarSubcontractorLogo },
+  { name: "EIC Engineering Industries Company", type: "Subcontractor", logo: fitOutBMLogo },
+  { name: "ALPHA Industries & Construction", type: "Subcontractor", logo: fitOutNBELogo },
 ];
 
 const PartnerGrid = () => {

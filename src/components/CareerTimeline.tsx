@@ -194,18 +194,14 @@ const CareerTimeline = () => {
                       <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium flex items-center gap-1">
                         <Award className="w-3 h-3" /> Certs:
                       </span>
-                      {job.certBadges.map((badge) => {}
-
-
-
-
-
-
-
-
-
-
-                  )}
+                      {job.certBadges.map((badge) => (
+                        <div key={badge.name} className="flex items-center gap-1.5 bg-secondary/50 px-1.5 py-0.5 rounded border border-border/50 group/cert hover:border-primary/50 transition-colors">
+                          <div className="w-4 h-4 overflow-hidden rounded-[2px] bg-white flex items-center justify-center">
+                            <img src={badge.image} alt={badge.name} className="w-full h-full object-contain" />
+                          </div>
+                          <span className="text-[10px] text-foreground font-medium whitespace-nowrap">{badge.name}</span>
+                        </div>
+                      ))}
                     </div>
                 }
 
