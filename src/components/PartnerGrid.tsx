@@ -17,6 +17,7 @@ import fitOutBMLogo from "@/assets/stakeholders/fit-out-bank-misr-wesal-subcontr
 import fitOutNBELogo from "@/assets/stakeholders/fit-out-nbe-wesal-subcontractor.png";
 import alMassarSubcontractorLogo from "@/assets/stakeholders/al-massar-subcontractor.png";
 import okoplanLogo from "@/assets/stakeholders/okoplan-logo.png";
+import s2aLogo from "@/assets/stakeholders/s2a-general-contracting.jpg";
 
 const partners = [
   // Clients
@@ -25,6 +26,7 @@ const partners = [
   { name: "ICONIC", type: "Client", logo: iconicLogo },
   // Developers & Contractors
   { name: "Mass Group", type: "Contractor", logo: massGroupLogo },
+  { name: "S2A General Contracting", type: "Contractor", logo: s2aLogo },
   { name: "MODAD", type: "Developer", logo: modadLogo },
   { name: "SKY AD", type: "Developer", logo: skyAdLogo },
   // Consultants
