@@ -10,13 +10,13 @@ import nbeLogo from "@/assets/stakeholders/the-national-bank-of-egypt.png";
 import banqueMisrLogo from "@/assets/stakeholders/banque-misr.png";
 import iconicLogo from "@/assets/stakeholders/iconic-dark-mode.webp";
 import designersLogo from "@/assets/stakeholders/designers-consultants.png";
-import alMassarSubLogo from "@/assets/stakeholders/al-massar-sub-consult.png";
+import alMassarSubLogo from "@/assets/stakeholders/gc-geo-consultant.png";
 import alMassarSub2Logo from "@/assets/stakeholders/al-massar-sub-consult-2.png";
 import alMassarSub3Logo from "@/assets/stakeholders/al-massar-sub-consult-3.png";
 import fitOutBMLogo from "@/assets/stakeholders/fit-out-bank-misr-wesal-subcontractor.png";
 import fitOutNBELogo from "@/assets/stakeholders/fit-out-nbe-wesal-subcontractor.png";
 import alMassarSubcontractorLogo from "@/assets/stakeholders/al-massar-subcontractor.png";
-import okoplanLogo from "@/assets/stakeholders/al-massar-sub-consult.png";
+import okoplanLogo from "@/assets/stakeholders/gc-geo-consultant.png";
 
 const partners = [
   // Clients
