@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X, Download } from "lucide-react";
+import profileLogo from "@/assets/profile-logo.png";
 
 const links = [
   { label: "Impact", href: "#impact" },
@@ -17,8 +18,8 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
       <div className="container max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
-        <a href="#" className="font-bold text-foreground text-sm tracking-wider">
-          M<span className="gradient-text">M</span>
+        <a href="#" className="flex items-center">
+          <img src={profileLogo} alt="Mohamed Mamdouh" className="w-8 h-8 rounded-full object-cover border border-border/50 shadow-sm" />
         </a>
 
         {/* Desktop */}
