@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X, Download } from "lucide-react";
+import profileLogo from "@/assets/profile-logo.png";
 
 const links = [
   { label: "Impact", href: "#impact" },
