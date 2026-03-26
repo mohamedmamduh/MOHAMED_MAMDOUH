@@ -26,6 +26,12 @@ import accessIcon from "@/assets/software/microsoft_office_access.png";
 import powerpointIcon from "@/assets/software/microsoft_office_powerpoint.png";
 import autocadIcon from "@/assets/software/auto-cad.png";
 
+// AI & LLMs
+import claudeIcon from "@/assets/software/claude-ai.png";
+import geminiIcon from "@/assets/software/gemini-ai.png";
+import chatgptIcon from "@/assets/software/chatgpt.png";
+import perplexityIcon from "@/assets/software/perplexity-ai.png";
+
 const categories = [
   {
     title: "EDMS",
@@ -68,6 +74,16 @@ const categories = [
       { name: "AutoCAD", icon: autocadIcon },
     ],
   },
+  {
+    title: "AI & LLMs",
+    description: "Artificial Intelligence Tools",
+    tools: [
+      { name: "Claude", icon: claudeIcon },
+      { name: "Gemini", icon: geminiIcon },
+      { name: "ChatGPT", icon: chatgptIcon },
+      { name: "Perplexity", icon: perplexityIcon },
+    ],
+  },
 ];
 
 const TechStack = () => {
@@ -82,6 +98,7 @@ const TechStack = () => {
           <p className="section-subheading mx-auto">Software & tools powering my document control workflow</p>
         </div>
 
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-5">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {categories.map((cat, i) => (
             <motion.div
