@@ -98,7 +98,7 @@ const HeroSection = () => {
             className="flex flex-wrap justify-center gap-4"
           >
             <a
-              href="/Mohamed_Mamdouh_CV.pdf"
+              href="/Document_Control_Mohamed_Mamdouh_UAE_CV.pdf"
               download
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity"
             >

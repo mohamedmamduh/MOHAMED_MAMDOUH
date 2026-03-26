@@ -51,7 +51,7 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
-          <a href="/Mohamed_Mamdouh_CV.pdf" download className="inline-flex items-center gap-1.5 text-sm text-primary font-medium">
+          <a href="/Document_Control_Mohamed_Mamdouh_UAE_CV.pdf" download className="inline-flex items-center gap-1.5 text-sm text-primary font-medium">
             <Download className="w-3.5 h-3.5" /> Download CV
           </a>
         </div>
