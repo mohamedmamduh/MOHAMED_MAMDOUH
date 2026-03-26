@@ -29,7 +29,7 @@ const Navbar = () => {
             </a>
           ))}
           <a
-            href="/Mohamed_Mamdouh_CV.pdf"
+            href="/Document_Control_Mohamed_Mamdouh_UAE_CV.pdf"
             download
             className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"
           >
