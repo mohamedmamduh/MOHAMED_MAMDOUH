@@ -1,5 +1,4 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { StaggerContainer, StaggerItem } from "./StaggerAnimations";
 
 // EDMS
 import aconexIcon from "@/assets/software/aconex.png";
@@ -87,53 +86,46 @@ const categories = [
 ];
 
 const TechStack = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-
   return (
-    <section className="py-20 px-4" id="tech" ref={ref}>
+    <section className="py-20 px-4" id="tech">
       <div className="container max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="section-heading">Technical <span className="gradient-text">Ecosystem</span></h2>
           <p className="section-subheading mx-auto">Software & tools powering my document control workflow</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-5">
-          {categories.map((cat, i) => (
-            <motion.div
-              key={cat.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.12 }}
-              className="glass-card p-5"
-            >
-              <div className="mb-4">
-                <h3 className="font-bold text-foreground text-lg">{cat.title}</h3>
-                <p className="text-xs text-muted-foreground">{cat.description}</p>
-              </div>
-              <div className="space-y-3">
-                {cat.tools.map((tool) => (
-                  <div key={tool.name} className="flex items-center gap-3 group hover:scale-[1.05] transition-all duration-300">
-                    <div className="w-9 h-9 rounded-lg bg-secondary/80 flex items-center justify-center p-1.5 shadow-sm shrink-0">
-                      <img
-                        src={tool.icon}
-                        alt={tool.name}
-                        className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
-                        loading="lazy"
-                      />
+        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-5 gap-5">
+          {categories.map((cat) => (
+            <StaggerItem key={cat.title}>
+              <div className="glass-card p-5 h-full">
+                <div className="mb-4">
+                  <h3 className="font-bold text-foreground text-lg">{cat.title}</h3>
+                  <p className="text-xs text-muted-foreground">{cat.description}</p>
+                </div>
+                <div className="space-y-3">
+                  {cat.tools.map((tool) => (
+                    <div key={tool.name} className="flex items-center gap-3 group hover:scale-[1.05] transition-all duration-300">
+                      <div className="w-9 h-9 rounded-lg bg-secondary/80 flex items-center justify-center p-1.5 shadow-sm shrink-0">
+                        <img
+                          src={tool.icon}
+                          alt={tool.name}
+                          className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="min-w-0">
+                        <span className="text-sm text-foreground font-medium block truncate">{tool.name}</span>
+                        {tool.note && (
+                          <span className="text-[10px] text-primary font-medium">{tool.note}</span>
+                        )}
+                      </div>
                     </div>
-                    <div className="min-w-0">
-                      <span className="text-sm text-foreground font-medium block truncate">{tool.name}</span>
-                      {tool.note && (
-                        <span className="text-[10px] text-primary font-medium">{tool.note}</span>
-                      )}
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </motion.div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

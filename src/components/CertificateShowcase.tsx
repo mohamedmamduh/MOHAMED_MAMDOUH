@@ -1,6 +1,7 @@
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import { X, ChevronLeft, ChevronRight, Award, GraduationCap } from "lucide-react";
+import { StaggerContainer, StaggerItem } from "./StaggerAnimations";
 
 // Google Certificates
 import googleCapstone from "@/assets/certificates/certificate-google-data-analytics-capstone-complete-a-case-study.jpeg";
@@ -107,8 +108,6 @@ const groups: { issuer: string; color: string; certs: Certificate[] }[] = [
 const allCerts = groups.flatMap((g) => g.certs);
 
 const CertificateShowcase = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const openLightbox = (cert: Certificate) => {
@@ -122,7 +121,7 @@ const CertificateShowcase = () => {
   };
 
   return (
-    <section className="py-20 px-4" id="certificates" ref={ref}>
+    <section className="py-20 px-4" id="certificates">
       <div className="container max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-14">
@@ -135,84 +134,75 @@ const CertificateShowcase = () => {
         </div>
 
         {/* Education Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="glass-card glow-border p-6 md:p-8 mb-14"
-        >
-          <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
-              <GraduationCap className="w-6 h-6" />
+        <StaggerContainer>
+          <StaggerItem>
+            <div className="glass-card glow-border p-6 md:p-8 mb-14">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                  <GraduationCap className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-foreground">B.Sc. Agricultural Science</h3>
+                  <p className="text-sm text-primary font-medium">Al-Azhar University · 2016 – 2020</p>
+                  <p className="text-sm text-muted-foreground mt-2 max-w-2xl">
+                    Qualified as an Agricultural Engineer with a solid foundation in engineering fundamentals, technical site development, and industrial operational standards — providing the analytical mindset that powers my document control and data analytics career.
+                  </p>
+                </div>
+              </div>
             </div>
-            <div>
-              <h3 className="text-lg font-bold text-foreground">B.Sc. Agricultural Science</h3>
-              <p className="text-sm text-primary font-medium">Al-Azhar University · 2016 – 2020</p>
-              <p className="text-sm text-muted-foreground mt-2 max-w-2xl">
-                Qualified as an Agricultural Engineer with a solid foundation in engineering fundamentals, technical site development, and industrial operational standards — providing the analytical mindset that powers my document control and data analytics career.
-              </p>
-            </div>
-          </div>
-        </motion.div>
+          </StaggerItem>
+        </StaggerContainer>
 
         {/* Certificate Groups */}
         <div className="space-y-14">
-          {groups.map((group, gi) => (
-            <motion.div
-              key={group.issuer}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: gi * 0.1 }}
-            >
+          {groups.map((group) => (
+            <div key={group.issuer}>
               <div className="flex items-center gap-3 mb-6">
                 <div className={`w-10 h-1.5 rounded-full bg-gradient-to-r ${group.color}`} />
                 <h3 className="text-xl font-bold text-foreground">{group.issuer}</h3>
                 <span className="text-sm text-muted-foreground font-medium">({group.certs.length})</span>
               </div>
 
-              {/* Bento Grid: featured certs get col-span-2 */}
-              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
+              <StaggerContainer className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
                 {group.certs.map((cert, ci) => (
-                  <motion.button
+                  <StaggerItem
                     key={`${cert.name}-${ci}`}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.3, delay: gi * 0.1 + ci * 0.04 }}
-                    onClick={() => openLightbox(cert)}
-                    className={`group cursor-pointer rounded-lg overflow-hidden border border-white/10 hover:border-primary/50 bg-secondary/20 shadow-sm hover:shadow-[0_8px_30px_-5px_hsl(var(--primary)/0.3)] transition-all duration-300 text-left hover:scale-[1.18] hover:z-10 relative ${
-                      cert.featured ? "sm:col-span-2" : ""
-                    }`}
+                    className={cert.featured ? "sm:col-span-2" : ""}
                   >
-                    <div className={`overflow-hidden ${cert.featured ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
-                      <img
-                        src={cert.image}
-                        alt={cert.name}
-                        className="w-full h-full object-cover transition-transform duration-300 ease-out"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="p-2.5">
-                      <p className="text-[11px] font-semibold text-foreground leading-tight line-clamp-2">{cert.name}</p>
-                      <p className="text-[10px] text-muted-foreground mt-0.5">{cert.issuer}</p>
-                      {/* Sub-courses for the Google Professional Certificate */}
-                      {cert.subCourses && (
-                        <div className="mt-3 border-t border-border/50 pt-3">
-                          <p className="text-[10px] uppercase tracking-wider text-primary font-semibold mb-2">8-Course Program Includes:</p>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
-                            {cert.subCourses.map((course, idx) => (
-                              <p key={idx} className="text-[11px] text-muted-foreground flex items-start gap-1.5">
-                                <span className="text-primary mt-0.5 shrink-0">✓</span>
-                                {course}
-                              </p>
-                            ))}
+                    <button
+                      onClick={() => openLightbox(cert)}
+                      className="group cursor-pointer rounded-lg overflow-hidden border border-white/10 hover:border-primary/50 bg-secondary/20 shadow-sm hover:shadow-[0_8px_30px_-5px_hsl(var(--primary)/0.3)] transition-all duration-300 text-left hover:scale-[1.18] hover:z-10 relative w-full"
+                    >
+                      <div className={`overflow-hidden ${cert.featured ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
+                        <img
+                          src={cert.image}
+                          alt={cert.name}
+                          className="w-full h-full object-cover transition-transform duration-300 ease-out"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="p-2.5">
+                        <p className="text-[11px] font-semibold text-foreground leading-tight line-clamp-2">{cert.name}</p>
+                        <p className="text-[10px] text-muted-foreground mt-0.5">{cert.issuer}</p>
+                        {cert.subCourses && (
+                          <div className="mt-3 border-t border-border/50 pt-3">
+                            <p className="text-[10px] uppercase tracking-wider text-primary font-semibold mb-2">8-Course Program Includes:</p>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
+                              {cert.subCourses.map((course, idx) => (
+                                <p key={idx} className="text-[11px] text-muted-foreground flex items-start gap-1.5">
+                                  <span className="text-primary mt-0.5 shrink-0">✓</span>
+                                  {course}
+                                </p>
+                              ))}
+                            </div>
                           </div>
-                        </div>
-                      )}
-                    </div>
-                  </motion.button>
+                        )}
+                      </div>
+                    </button>
+                  </StaggerItem>
                 ))}
-              </div>
-            </motion.div>
+              </StaggerContainer>
+            </div>
           ))}
         </div>
       </div>
