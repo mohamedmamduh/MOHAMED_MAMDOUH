@@ -8,20 +8,21 @@ import PartnerGrid from "@/components/PartnerGrid";
 import CareerTimeline from "@/components/CareerTimeline";
 import FAQ from "@/components/FAQ";
 import ContactCTA from "@/components/ContactCTA";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
-      <ImpactDashboard />
-      <CaseStudies />
-      <TechStack />
-      <CertificateShowcase />
-      <PartnerGrid />
-      <CareerTimeline />
-      <FAQ />
-      <ContactCTA />
+      <ScrollReveal><ImpactDashboard /></ScrollReveal>
+      <ScrollReveal><CaseStudies /></ScrollReveal>
+      <ScrollReveal><TechStack /></ScrollReveal>
+      <ScrollReveal><CertificateShowcase /></ScrollReveal>
+      <ScrollReveal><PartnerGrid /></ScrollReveal>
+      <ScrollReveal><CareerTimeline /></ScrollReveal>
+      <ScrollReveal><FAQ /></ScrollReveal>
+      <ScrollReveal><ContactCTA /></ScrollReveal>
       <footer className="py-10 text-center text-xs text-muted-foreground border-t border-border">
         © 2026 Mohamed Mamdouh. Built for Dubai opportunities.
       </footer>
