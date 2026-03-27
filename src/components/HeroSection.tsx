@@ -32,7 +32,7 @@ const HeroSection = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="relative"
           >
-            <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-primary/30 animate-pulse-glow">
+            <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-primary/30 animate-pulse-glow transition-all duration-300 hover:border-primary/70 hover:shadow-[0_0_25px_-4px_hsl(199_89%_48%/0.5)] hover:scale-105">
               <img
                 src={photos[activePhoto]}
                 alt="Mohamed Mamdouh"
