@@ -19,7 +19,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
       <div className="container max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
         <a href="#" className="flex items-center">
-          <img src={profileLogo} alt="Mohamed Mamdouh" className="w-8 h-8 rounded-full object-cover border border-border/50 shadow-sm" />
+          <img src={profileLogo} alt="Mohamed Mamdouh" className="w-8 h-8 rounded-full object-cover border border-border/50 shadow-sm transition-all duration-300 hover:border-primary/60 hover:shadow-[0_0_12px_-2px_hsl(199_89%_48%/0.4)] hover:scale-110" />
         </a>
 
         {/* Desktop */}
