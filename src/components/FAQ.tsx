@@ -1,6 +1,7 @@
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 import { ChevronDown, HelpCircle } from "lucide-react";
+import { StaggerContainer, StaggerItem } from "./StaggerAnimations";
 
 const faqs = [
   {
@@ -30,49 +31,43 @@ const faqs = [
 ];
 
 const FAQ = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-20 px-4" id="faq" ref={ref}>
+    <section className="py-20 px-4" id="faq">
       <div className="container max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="section-heading">Frequently Asked <span className="gradient-text">Questions</span></h2>
           <p className="section-subheading mx-auto">Common questions from recruiters and hiring managers</p>
         </div>
 
-        <div className="space-y-3">
+        <StaggerContainer className="space-y-3">
           {faqs.map((faq, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 10 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: i * 0.06 }}
-              className="glass-card overflow-hidden"
-            >
-              <button
-                onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between p-5 text-left"
-              >
-                <div className="flex items-center gap-3">
-                  <HelpCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span className="text-sm font-semibold text-foreground">{faq.q}</span>
-                </div>
-                <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform flex-shrink-0 ${openIndex === i ? "rotate-180" : ""}`} />
-              </button>
-              {openIndex === i && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  className="px-5 pb-5"
+            <StaggerItem key={i}>
+              <div className="glass-card overflow-hidden">
+                <button
+                  onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                  className="w-full flex items-center justify-between p-5 text-left"
                 >
-                  <p className="text-sm text-muted-foreground leading-relaxed pl-7">{faq.a}</p>
-                </motion.div>
-              )}
-            </motion.div>
+                  <div className="flex items-center gap-3">
+                    <HelpCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                    <span className="text-sm font-semibold text-foreground">{faq.q}</span>
+                  </div>
+                  <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform flex-shrink-0 ${openIndex === i ? "rotate-180" : ""}`} />
+                </button>
+                {openIndex === i && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    className="px-5 pb-5"
+                  >
+                    <p className="text-sm text-muted-foreground leading-relaxed pl-7">{faq.a}</p>
+                  </motion.div>
+                )}
+              </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );
