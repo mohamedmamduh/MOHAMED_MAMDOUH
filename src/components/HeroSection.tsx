@@ -41,51 +41,44 @@ const HeroSection = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="relative flex flex-col items-center"
           >
-            {/* Pop-out container */}
-            <div className="relative w-72 h-[26rem] md:w-96 md:h-[34rem] lg:w-[26rem] lg:h-[36rem]">
-              {/* Circular frame with transparent/subtle fill */}
+            {/* SVG clip: open top, circular bottom */}
+            <svg width="0" height="0" className="absolute" aria-hidden="true">
+              <defs>
+                <clipPath id="popout-clip" clipPathUnits="objectBoundingBox">
+                  {/* Rectangle from top to ~42%, then a semicircular arc across the bottom */}
+                  <path d="M 0,0 L 1,0 L 1,0.42 A 0.5,0.42 0 0,1 0,0.42 Z" />
+                </clipPath>
+              </defs>
+            </svg>
+
+            {/* Pop-out container — single image, no duplicate layers */}
+            <div className="relative w-72 h-[24rem] md:w-96 md:h-[32rem] lg:w-[28rem] lg:h-[36rem]">
+              {/* Circular ring frame behind the person */}
               <div
-                className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[86%] aspect-square rounded-full border-2 border-primary/30 bg-background/20 shadow-[0_16px_50px_-10px_hsl(var(--primary)/0.35)]"
+                className="absolute left-1/2 -translate-x-1/2 bottom-0 rounded-full border-2 border-primary/25 bg-primary/5 shadow-[0_12px_48px_-8px_hsl(var(--primary)/0.3)]"
+                style={{ width: "82%", paddingBottom: "82%" }}
                 aria-hidden="true"
               />
 
-              {/* Image layers: lower part clipped to circle + upper pop-out above frame */}
+              {/* Single image with clip-path: circular bottom, open top */}
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activePhoto}
-                  initial={{ opacity: 0, y: 12 }}
+                  initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.7, ease: "easeInOut" }}
                   className="absolute inset-0"
+                  style={{
+                    clipPath: "url(#popout-clip)",
+                    filter:
+                      "drop-shadow(0 14px 28px hsl(var(--foreground) / 0.3)) drop-shadow(0 4px 10px hsl(var(--foreground) / 0.18))",
+                  }}
                 >
-                  {/* Bottom strictly contained by the circular curve */}
-                  <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[86%] aspect-square rounded-full overflow-hidden">
-                    <img
-                      src={photos[activePhoto]}
-                      alt="Mohamed Mamdouh"
-                      className="w-full h-[160%] object-cover object-top"
-                      style={{
-                        transform: "translateY(-20%)",
-                        filter:
-                          "drop-shadow(0 10px 24px hsl(var(--foreground) / 0.25)) drop-shadow(0 2px 8px hsl(var(--foreground) / 0.15))",
-                      }}
-                    />
-                  </div>
-
-                  {/* Upper part pops outside and above the frame */}
                   <img
                     src={photos[activePhoto]}
                     alt="Mohamed Mamdouh"
-                    className="absolute inset-0 w-full h-full object-cover object-top"
-                    style={{
-                      maskImage:
-                        "linear-gradient(to bottom, black 0%, black 56%, transparent 72%)",
-                      WebkitMaskImage:
-                        "linear-gradient(to bottom, black 0%, black 56%, transparent 72%)",
-                      filter:
-                        "drop-shadow(0 18px 32px hsl(var(--foreground) / 0.28)) drop-shadow(0 6px 12px hsl(var(--foreground) / 0.18))",
-                    }}
+                    className="w-full h-full object-cover object-top"
                   />
                 </motion.div>
               </AnimatePresence>
