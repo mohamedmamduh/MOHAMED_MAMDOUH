@@ -6,6 +6,7 @@ import profileFormal from "@/assets/profile-formal.png";
 import { useState, useEffect } from "react";
 
 const photos = [profileMain, profileCasual, profileFormal];
+const AUTOPLAY_DELAY = 4000;
 
 const HeroSection = () => {
   const [activePhoto, setActivePhoto] = useState(0);
@@ -14,7 +15,7 @@ const HeroSection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setActivePhoto((prev) => (prev + 1) % photos.length);
-    }, 4000);
+    }, AUTOPLAY_DELAY);
     return () => clearInterval(interval);
   }, []);
 
@@ -40,52 +41,54 @@ const HeroSection = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="relative flex flex-col items-center"
           >
-            {/* SVG clip definition - circle bottom, open top */}
-            <svg width="0" height="0" className="absolute">
-              <defs>
-                <clipPath id="popout-clip" clipPathUnits="objectBoundingBox">
-                  {/* Top rectangle (0,0 to 1,0.45) + bottom circle arc */}
-                  <path d="M 0,0 L 1,0 L 1,0.45 
-                    A 0.5,0.5 0 0,1 0,0.45 Z" />
-                </clipPath>
-              </defs>
-            </svg>
-
             {/* Pop-out container */}
-            <div className="relative w-56 h-72 md:w-72 md:h-[22rem] lg:w-80 lg:h-[26rem]">
-              {/* The circular frame ring - positioned at bottom */}
-              <div 
-                className="absolute left-1/2 -translate-x-1/2 rounded-full border-2 border-primary/30 shadow-[0_8px_40px_-4px_hsl(var(--primary)/0.35)]"
-                style={{
-                  width: '85%',
-                  paddingBottom: '85%',
-                  bottom: '0',
-                }}
+            <div className="relative w-72 h-[26rem] md:w-96 md:h-[34rem] lg:w-[26rem] lg:h-[36rem]">
+              {/* Circular frame with transparent/subtle fill */}
+              <div
+                className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[86%] aspect-square rounded-full border-2 border-primary/30 bg-background/20 shadow-[0_16px_50px_-10px_hsl(var(--primary)/0.35)]"
+                aria-hidden="true"
               />
-              
-              {/* The image with pop-out clip */}
-              <div className="absolute inset-0 flex items-end justify-center">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activePhoto}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.6, ease: "easeInOut" }}
-                    className="w-full h-full"
-                    style={{
-                      clipPath: 'url(#popout-clip)',
-                      filter: "drop-shadow(0 8px 20px rgba(0,0,0,0.35)) drop-shadow(0 2px 6px rgba(0,0,0,0.25))",
-                    }}
-                  >
+
+              {/* Image layers: lower part clipped to circle + upper pop-out above frame */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activePhoto}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.7, ease: "easeInOut" }}
+                  className="absolute inset-0"
+                >
+                  {/* Bottom strictly contained by the circular curve */}
+                  <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[86%] aspect-square rounded-full overflow-hidden">
                     <img
                       src={photos[activePhoto]}
                       alt="Mohamed Mamdouh"
-                      className="w-full h-full object-cover object-top"
+                      className="w-full h-[160%] object-cover object-top"
+                      style={{
+                        transform: "translateY(-20%)",
+                        filter:
+                          "drop-shadow(0 10px 24px hsl(var(--foreground) / 0.25)) drop-shadow(0 2px 8px hsl(var(--foreground) / 0.15))",
+                      }}
                     />
-                  </motion.div>
-                </AnimatePresence>
-              </div>
+                  </div>
+
+                  {/* Upper part pops outside and above the frame */}
+                  <img
+                    src={photos[activePhoto]}
+                    alt="Mohamed Mamdouh"
+                    className="absolute inset-0 w-full h-full object-cover object-top"
+                    style={{
+                      maskImage:
+                        "linear-gradient(to bottom, black 0%, black 56%, transparent 72%)",
+                      WebkitMaskImage:
+                        "linear-gradient(to bottom, black 0%, black 56%, transparent 72%)",
+                      filter:
+                        "drop-shadow(0 18px 32px hsl(var(--foreground) / 0.28)) drop-shadow(0 6px 12px hsl(var(--foreground) / 0.18))",
+                    }}
+                  />
+                </motion.div>
+              </AnimatePresence>
             </div>
 
             {/* Dot indicators */}
@@ -94,6 +97,7 @@ const HeroSection = () => {
                 <button
                   key={i}
                   onClick={() => setActivePhoto(i)}
+                  aria-label={`View profile photo ${i + 1}`}
                   className={`rounded-full transition-all duration-300 ${
                     activePhoto === i
                       ? "w-8 h-2.5 bg-primary shadow-[0_0_10px_hsl(var(--primary)/0.5)]"
