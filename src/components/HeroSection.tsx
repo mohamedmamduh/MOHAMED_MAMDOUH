@@ -40,29 +40,48 @@ const HeroSection = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="relative flex flex-col items-center"
           >
+            {/* SVG clip definition - circle bottom, open top */}
+            <svg width="0" height="0" className="absolute">
+              <defs>
+                <clipPath id="popout-clip" clipPathUnits="objectBoundingBox">
+                  {/* Top rectangle (0,0 to 1,0.45) + bottom circle arc */}
+                  <path d="M 0,0 L 1,0 L 1,0.45 
+                    A 0.5,0.5 0 0,1 0,0.45 Z" />
+                </clipPath>
+              </defs>
+            </svg>
+
             {/* Pop-out container */}
-            <div className="relative w-52 h-52 md:w-64 md:h-64 lg:w-72 lg:h-72">
-              {/* The circular frame - sits behind the image */}
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-48 md:w-60 md:h-60 lg:w-68 lg:h-68 rounded-full border-2 border-primary/30 bg-gradient-to-b from-primary/5 to-primary/15 shadow-[0_8px_32px_-4px_hsl(var(--primary)/0.3)]" />
+            <div className="relative w-56 h-72 md:w-72 md:h-[22rem] lg:w-80 lg:h-[26rem]">
+              {/* The circular frame ring - positioned at bottom */}
+              <div 
+                className="absolute left-1/2 -translate-x-1/2 rounded-full border-2 border-primary/30 shadow-[0_8px_40px_-4px_hsl(var(--primary)/0.35)]"
+                style={{
+                  width: '85%',
+                  paddingBottom: '85%',
+                  bottom: '0',
+                }}
+              />
               
-              {/* The image - extends above the frame */}
+              {/* The image with pop-out clip */}
               <div className="absolute inset-0 flex items-end justify-center">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activePhoto}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="relative w-full h-full"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                    className="w-full h-full"
                     style={{
-                      filter: "drop-shadow(0 12px 24px rgba(0,0,0,0.4)) drop-shadow(0 4px 8px rgba(0,0,0,0.3))",
+                      clipPath: 'url(#popout-clip)',
+                      filter: "drop-shadow(0 8px 20px rgba(0,0,0,0.35)) drop-shadow(0 2px 6px rgba(0,0,0,0.25))",
                     }}
                   >
                     <img
                       src={photos[activePhoto]}
                       alt="Mohamed Mamdouh"
-                      className="w-full h-full object-contain object-bottom"
+                      className="w-full h-full object-cover object-top"
                     />
                   </motion.div>
                 </AnimatePresence>
