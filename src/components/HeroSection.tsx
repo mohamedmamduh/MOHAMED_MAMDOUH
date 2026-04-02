@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Download, Linkedin, Mail, Phone, ExternalLink } from "lucide-react";
+import { MapPin, Download, Linkedin, Mail, Phone, ExternalLink, MessageCircle } from "lucide-react";
 import profileMain from "@/assets/profile-main.png";
 import profileCasual from "@/assets/profile-casual.png";
 import profileFormal from "@/assets/profile-formal.png";
