@@ -1,23 +1,14 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { MapPin, Download, Linkedin, Mail, Phone, ExternalLink } from "lucide-react";
 import profileMain from "@/assets/profile-main.png";
 import profileCasual from "@/assets/profile-casual.png";
 import profileFormal from "@/assets/profile-formal.png";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const photos = [profileMain, profileCasual, profileFormal];
-const AUTOPLAY_DELAY = 4000;
 
 const HeroSection = () => {
   const [activePhoto, setActivePhoto] = useState(0);
-
-  // Auto-slide every 4 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActivePhoto((prev) => (prev + 1) % photos.length);
-    }, AUTOPLAY_DELAY);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-20">
@@ -34,58 +25,34 @@ const HeroSection = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="flex flex-col items-center text-center gap-8"
         >
-          {/* Profile Image - Pop-out Carousel */}
+          {/* Profile Image Gallery */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative flex flex-col items-center"
+            className="relative"
           >
-            {/* Pop-out container — person stands in front of the circle */}
-            <div className="relative w-72 h-[24rem] md:w-96 md:h-[32rem] lg:w-[28rem] lg:h-[36rem]">
-              {/* Circular ring frame behind the person */}
-              <div
-                className="absolute left-1/2 -translate-x-1/2 bottom-[10%] rounded-full border-2 border-primary/25 bg-primary/5 shadow-[0_12px_48px_-8px_hsl(var(--primary)/0.3)]"
-                style={{ width: "78%", paddingBottom: "78%" }}
-                aria-hidden="true"
+            <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-primary/30 animate-pulse-glow transition-all duration-300 hover:border-primary/70 hover:shadow-[0_0_25px_-4px_hsl(199_89%_48%/0.5)] hover:scale-105">
+              <img
+                src={photos[activePhoto]}
+                alt="Mohamed Mamdouh"
+                className="w-full h-full object-cover object-top transition-opacity duration-500"
               />
-
-              {/* Full person image — no clipping, stands in front of circle */}
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activePhoto}
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.7, ease: "easeInOut" }}
-                  className="absolute inset-0"
-                  style={{
-                    filter:
-                      "drop-shadow(0 14px 28px hsl(var(--foreground) / 0.3)) drop-shadow(0 4px 10px hsl(var(--foreground) / 0.18))",
-                  }}
-                >
-                  <img
-                    src={photos[activePhoto]}
-                    alt="Mohamed Mamdouh"
-                    className="w-full h-full object-cover object-top"
-                  />
-                </motion.div>
-              </AnimatePresence>
             </div>
-
-            {/* Dot indicators */}
-            <div className="flex gap-2.5 justify-center mt-5">
-              {photos.map((_, i) => (
+            {/* Thumbnail selectors */}
+            <div className="flex gap-2 justify-center mt-4">
+              {photos.map((photo, i) => (
                 <button
                   key={i}
                   onClick={() => setActivePhoto(i)}
-                  aria-label={`View profile photo ${i + 1}`}
-                  className={`rounded-full transition-all duration-300 ${
+                  className={`w-10 h-10 rounded-full overflow-hidden border-2 transition-all duration-300 ${
                     activePhoto === i
-                      ? "w-8 h-2.5 bg-primary shadow-[0_0_10px_hsl(var(--primary)/0.5)]"
-                      : "w-2.5 h-2.5 bg-muted-foreground/30 hover:bg-muted-foreground/60"
+                      ? "border-primary scale-110 shadow-lg"
+                      : "border-border/50 opacity-60 hover:opacity-100"
                   }`}
-                />
+                >
+                  <img src={photo} alt="" className="w-full h-full object-cover object-top" />
+                </button>
               ))}
             </div>
           </motion.div>
