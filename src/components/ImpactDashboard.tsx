@@ -83,3 +83,30 @@ const AnimatedCounter = ({ from, to, label, icon }: CounterProps) => {
     </StaggerItem>
   );
 };
+
+const ImpactDashboard = () => {
+  const metrics = [
+    { from: "7 Days", to: "48 Hours", label: "Efficiency", icon: <Clock className="w-5 h-5" /> },
+    { from: "0", to: "11,000+", label: "Repository Records", icon: <Database className="w-5 h-5" /> },
+    { from: "—", to: "80+", label: "Daily Document Flow", icon: <Zap className="w-5 h-5" /> },
+    { from: "—", to: "7+", label: "Key Entities Managed", icon: <Users className="w-5 h-5" /> },
+  ];
+
+  return (
+    <section className="py-20 px-4" id="impact">
+      <div className="container max-w-5xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="section-heading">Impact <span className="gradient-text">Dashboard</span></h2>
+          <p className="section-subheading mx-auto">Measurable results from real construction projects</p>
+        </div>
+        <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {metrics.map((m) => (
+            <AnimatedCounter key={m.label} {...m} />
+          ))}
+        </StaggerContainer>
+      </div>
+    </section>
+  );
+};
+
+export default ImpactDashboard;
