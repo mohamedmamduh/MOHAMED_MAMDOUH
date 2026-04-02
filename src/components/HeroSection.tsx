@@ -41,26 +41,16 @@ const HeroSection = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="relative flex flex-col items-center"
           >
-            {/* SVG clip: open top, circular bottom */}
-            <svg width="0" height="0" className="absolute" aria-hidden="true">
-              <defs>
-                <clipPath id="popout-clip" clipPathUnits="objectBoundingBox">
-                  {/* Rectangle from top to ~42%, then a semicircular arc across the bottom */}
-                  <path d="M 0,0 L 1,0 L 1,0.42 A 0.5,0.42 0 0,1 0,0.42 Z" />
-                </clipPath>
-              </defs>
-            </svg>
-
-            {/* Pop-out container — single image, no duplicate layers */}
+            {/* Pop-out container — person stands in front of the circle */}
             <div className="relative w-72 h-[24rem] md:w-96 md:h-[32rem] lg:w-[28rem] lg:h-[36rem]">
               {/* Circular ring frame behind the person */}
               <div
-                className="absolute left-1/2 -translate-x-1/2 bottom-0 rounded-full border-2 border-primary/25 bg-primary/5 shadow-[0_12px_48px_-8px_hsl(var(--primary)/0.3)]"
-                style={{ width: "82%", paddingBottom: "82%" }}
+                className="absolute left-1/2 -translate-x-1/2 bottom-[10%] rounded-full border-2 border-primary/25 bg-primary/5 shadow-[0_12px_48px_-8px_hsl(var(--primary)/0.3)]"
+                style={{ width: "78%", paddingBottom: "78%" }}
                 aria-hidden="true"
               />
 
-              {/* Single image with clip-path: circular bottom, open top */}
+              {/* Full person image — no clipping, stands in front of circle */}
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activePhoto}
@@ -70,7 +60,6 @@ const HeroSection = () => {
                   transition={{ duration: 0.7, ease: "easeInOut" }}
                   className="absolute inset-0"
                   style={{
-                    clipPath: "url(#popout-clip)",
                     filter:
                       "drop-shadow(0 14px 28px hsl(var(--foreground) / 0.3)) drop-shadow(0 4px 10px hsl(var(--foreground) / 0.18))",
                   }}
