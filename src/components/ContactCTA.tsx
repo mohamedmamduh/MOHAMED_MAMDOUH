@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Download, Linkedin, Mail, ExternalLink, Phone } from "lucide-react";
+import { Download, Linkedin, Mail, ExternalLink, Phone, MessageCircle } from "lucide-react";
 
 const ContactCTA = () => {
   const ref = useRef<HTMLDivElement>(null);
