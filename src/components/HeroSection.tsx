@@ -76,7 +76,7 @@ const HeroSection = () => {
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-semibold"
           >
             <MapPin className="w-4 h-4" />
-            Relocating to Dubai · April 2, 2026
+            Dubai, United Arab Emirates · April 2, 2026
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
           </motion.div>
 
