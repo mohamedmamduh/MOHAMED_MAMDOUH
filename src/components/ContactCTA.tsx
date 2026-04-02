@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Download, Linkedin, Mail, ExternalLink, Phone } from "lucide-react";
+import { Download, Linkedin, Mail, ExternalLink, Phone, MessageCircle } from "lucide-react";
 
 const ContactCTA = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -55,8 +55,11 @@ const ContactCTA = () => {
             <a href="mailto:mamduh.mohamed@yahoo.com" className="flex items-center gap-2 hover:text-primary transition-colors">
               <Mail className="w-4 h-4" /> mamduh.mohamed@yahoo.com
             </a>
-            <a href="https://wa.me/971585745516" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
+            <a href="tel:+971585745516" className="flex items-center gap-2 hover:text-primary transition-colors">
               <Phone className="w-4 h-4" /> +971 58 574 5516
+            </a>
+            <a href="https://wa.me/971585745516" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
+              <MessageCircle className="w-4 h-4" /> WhatsApp
             </a>
           </div>
         </motion.div>
