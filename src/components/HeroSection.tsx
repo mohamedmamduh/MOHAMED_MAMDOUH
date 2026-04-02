@@ -3,7 +3,7 @@ import { MapPin, Download, Linkedin, Mail, Phone, ExternalLink } from "lucide-re
 import profileMain from "@/assets/profile-main.png";
 import profileCasual from "@/assets/profile-casual.png";
 import profileFormal from "@/assets/profile-formal.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const photos = [profileMain, profileCasual, profileFormal];
 
