@@ -142,9 +142,9 @@ const HeroSection = () => {
             <a href="mailto:mamduh.mohamed@yahoo.com" className="flex items-center gap-1.5 hover:text-primary transition-colors">
               <Mail className="w-3.5 h-3.5" /> mamduh.mohamed@yahoo.com
             </a>
-            <span className="flex items-center gap-1.5">
-              <Phone className="w-3.5 h-3.5" /> +971 058 574 5516
-            </span>
+            <a href="https://wa.me/971585745516" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-primary transition-colors">
+              <Phone className="w-3.5 h-3.5" /> +971 58 574 5516
+            </a>
           </motion.div>
         </motion.div>
       </div>

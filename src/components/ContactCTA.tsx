@@ -55,9 +55,9 @@ const ContactCTA = () => {
             <a href="mailto:mamduh.mohamed@yahoo.com" className="flex items-center gap-2 hover:text-primary transition-colors">
               <Mail className="w-4 h-4" /> mamduh.mohamed@yahoo.com
             </a>
-            <span className="flex items-center gap-2">
-              <Phone className="w-4 h-4" /> +971 058 574 5516
-            </span>
+            <a href="https://wa.me/971585745516" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
+              <Phone className="w-4 h-4" /> +971 58 574 5516
+            </a>
           </div>
         </motion.div>
       </div>
