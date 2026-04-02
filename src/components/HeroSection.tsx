@@ -3,12 +3,19 @@ import { MapPin, Download, Linkedin, Mail, Phone, ExternalLink } from "lucide-re
 import profileMain from "@/assets/profile-main.png";
 import profileCasual from "@/assets/profile-casual.png";
 import profileFormal from "@/assets/profile-formal.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const photos = [profileMain, profileCasual, profileFormal];
 
 const HeroSection = () => {
   const [activePhoto, setActivePhoto] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActivePhoto((prev) => (prev + 1) % photos.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-20">
