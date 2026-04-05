@@ -4,11 +4,8 @@ import { jobs } from "./career/careerData";
 import LogoRow from "./career/LogoRow";
 
 const CareerTimeline = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-
   return (
-    <section className="py-20 px-4" id="career" ref={ref}>
+    <section className="py-20 px-4" id="career">
       <div className="container max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="section-heading">Career <span className="gradient-text">Journey</span></h2>
