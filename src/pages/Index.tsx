@@ -8,6 +8,7 @@ import PartnerGrid from "@/components/PartnerGrid";
 import CareerTimeline from "@/components/CareerTimeline";
 import FAQ from "@/components/FAQ";
 import ContactCTA from "@/components/ContactCTA";
+import LinkedInBadge from "@/components/LinkedInBadge";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const Index = () => {
@@ -22,6 +23,7 @@ const Index = () => {
       <ScrollReveal><PartnerGrid /></ScrollReveal>
       <ScrollReveal><CareerTimeline /></ScrollReveal>
       <ScrollReveal><FAQ /></ScrollReveal>
+      <ScrollReveal><LinkedInBadge /></ScrollReveal>
       <ScrollReveal><ContactCTA /></ScrollReveal>
       <footer className="py-10 text-center text-xs text-muted-foreground border-t border-border">
         © 2026 Mohamed Mamdouh. Built for Dubai opportunities.
