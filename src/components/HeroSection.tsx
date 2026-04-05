@@ -85,14 +85,19 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Name */}
+          {/* Name - Typewriter */}
           <div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-              <span className="gradient-text">MOHAMED</span>{" "}
-              <span className="text-foreground">MAMDOUH</span>
+              <span className="gradient-text">{firstName}</span>{firstName.length >= "MOHAMED".length ? " " : ""}
+              <span className="text-foreground">{lastName}</span>
+              <span className="inline-block w-[3px] h-[0.8em] bg-primary/70 align-middle ml-1 animate-pulse" 
+                style={{ opacity: (firstName.length + lastName.length) < ("MOHAMED".length + "MAMDOUH".length) ? 1 : 0 }} />
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mt-3 font-medium">
-              Senior Document Controller <span className="text-primary">|</span> Data Analyst
+            <p className="text-lg md:text-xl text-muted-foreground mt-3 font-medium h-7">
+              {subtitle}
+              {subtitle.length < "Senior Document Controller | Data Analyst".length && (
+                <span className="inline-block w-[2px] h-[0.9em] bg-muted-foreground/70 align-middle ml-0.5 animate-pulse" />
+              )}
             </p>
           </div>
 
@@ -100,7 +105,7 @@ const HeroSection = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4 }}
+            transition={{ delay: 2.5 }}
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-semibold"
           >
             <MapPin className="w-4 h-4" />
@@ -108,15 +113,20 @@ const HeroSection = () => {
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
           </motion.div>
 
-          {/* Summary */}
-          <motion.p
+          {/* Summary - Typewriter */}
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 2.8 }}
             className="max-w-2xl text-muted-foreground leading-relaxed"
           >
-            I help companies master large-scale project documentation by leveraging my engineering background and advanced data analytics skills. I build fast, audit-ready systems that empower teams to retrieve any project information in seconds.
-          </motion.p>
+            <p>
+              {summary}
+              {summary.length < summaryText.length && (
+                <span className="inline-block w-[2px] h-[0.9em] bg-muted-foreground/50 align-middle ml-0.5 animate-pulse" />
+              )}
+            </p>
+          </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
