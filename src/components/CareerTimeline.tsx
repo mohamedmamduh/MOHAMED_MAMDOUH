@@ -24,9 +24,9 @@ const CareerTimeline = () => {
             {jobs.map((job, i) => (
               <motion.div
                 key={`${job.company}-${job.period}`}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -80 : 80 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.12 }}
+                transition={{ duration: 0.7, delay: i * 0.2, ease: [0.25, 0.1, 0.25, 1] }}
                 className={`relative flex flex-col md:flex-row ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} items-start gap-4`}
               >
                 {/* Dot */}
