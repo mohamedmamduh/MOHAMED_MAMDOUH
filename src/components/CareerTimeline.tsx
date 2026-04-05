@@ -1,15 +1,11 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { Building2, Briefcase, Award, Monitor, Users } from "lucide-react";
 import { jobs } from "./career/careerData";
 import LogoRow from "./career/LogoRow";
 
 const CareerTimeline = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-
   return (
-    <section className="py-20 px-4" id="career" ref={ref}>
+    <section className="py-20 px-4" id="career">
       <div className="container max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="section-heading">Career <span className="gradient-text">Journey</span></h2>
@@ -25,8 +21,9 @@ const CareerTimeline = () => {
               <motion.div
                 key={`${job.company}-${job.period}`}
                 initial={{ opacity: 0, x: i % 2 === 0 ? -80 : 80 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.7, delay: i * 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
                 className={`relative flex flex-col md:flex-row ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} items-start gap-4`}
               >
                 {/* Dot */}
