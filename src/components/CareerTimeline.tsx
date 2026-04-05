@@ -1,5 +1,4 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { Building2, Briefcase, Award, Monitor, Users } from "lucide-react";
 import { jobs } from "./career/careerData";
 import LogoRow from "./career/LogoRow";
