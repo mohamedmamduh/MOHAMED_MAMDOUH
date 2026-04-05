@@ -8,6 +8,7 @@ import PartnerGrid from "@/components/PartnerGrid";
 import CareerTimeline from "@/components/CareerTimeline";
 import FAQ from "@/components/FAQ";
 import ContactCTA from "@/components/ContactCTA";
+import LinkedInBadge from "@/components/LinkedInBadge";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const Index = () => {
