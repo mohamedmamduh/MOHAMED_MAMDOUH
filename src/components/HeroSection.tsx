@@ -3,7 +3,28 @@ import { MapPin, Download, Linkedin, Mail, Phone, ExternalLink, MessageCircle } 
 import profileMain from "@/assets/profile-main.png";
 import profileCasual from "@/assets/profile-casual.png";
 import profileFormal from "@/assets/profile-formal.png";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+
+const useTypewriter = (text: string, speed = 50, delay = 0) => {
+  const [displayedText, setDisplayedText] = useState("");
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setStarted(true), delay);
+    return () => clearTimeout(timeout);
+  }, [delay]);
+
+  useEffect(() => {
+    if (!started) return;
+    if (displayedText.length >= text.length) return;
+    const timer = setTimeout(() => {
+      setDisplayedText(text.slice(0, displayedText.length + 1));
+    }, speed);
+    return () => clearTimeout(timer);
+  }, [displayedText, text, speed, started]);
+
+  return displayedText;
+};
 
 const photos = [profileMain, profileCasual, profileFormal];
 
