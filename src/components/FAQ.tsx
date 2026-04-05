@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: "Are you available for immediate relocation?",
-    a: "Yes. I'm relocating to Dubai on April 2, 2026, and will be available for immediate employment. I hold the necessary qualifications and am ready for UAE-based construction and infrastructure projects.",
+    a: "Yes. I am already in Dubai and an immediate joiner. I hold the necessary qualifications and am available for immediate employment.\"",
   },
   {
     q: "What types of projects have you worked on?",
