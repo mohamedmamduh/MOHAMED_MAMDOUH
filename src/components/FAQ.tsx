@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: "Are you available for immediate relocation?",
-    a: "Yes. I am already in Dubai and an immediate joiner. I hold the necessary qualifications and am available for immediate employment.",
+    a: "Yes. I am already in Dubai and an immediate joiner. I hold the necessary qualifications and am available for immediate employment.\"",
   },
   {
     q: "What types of projects have you worked on?",
