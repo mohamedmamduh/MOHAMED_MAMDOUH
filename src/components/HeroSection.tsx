@@ -28,8 +28,14 @@ const useTypewriter = (text: string, speed = 50, delay = 0) => {
 
 const photos = [profileMain, profileCasual, profileFormal];
 
+const summaryText = "I help companies master large-scale project documentation by leveraging my engineering background and advanced data analytics skills. I build fast, audit-ready systems that empower teams to retrieve any project information in seconds.";
+
 const HeroSection = () => {
   const [activePhoto, setActivePhoto] = useState(0);
+  const firstName = useTypewriter("MOHAMED", 80, 500);
+  const lastName = useTypewriter("MAMDOUH", 80, 1100);
+  const subtitle = useTypewriter("Senior Document Controller | Data Analyst", 40, 1700);
+  const summary = useTypewriter(summaryText, 15, 3000);
 
   useEffect(() => {
     const interval = setInterval(() => {
