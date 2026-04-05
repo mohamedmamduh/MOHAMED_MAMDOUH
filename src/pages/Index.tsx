@@ -23,6 +23,7 @@ const Index = () => {
       <ScrollReveal><PartnerGrid /></ScrollReveal>
       <ScrollReveal><CareerTimeline /></ScrollReveal>
       <ScrollReveal><FAQ /></ScrollReveal>
+      <ScrollReveal><LinkedInBadge /></ScrollReveal>
       <ScrollReveal><ContactCTA /></ScrollReveal>
       <footer className="py-10 text-center text-xs text-muted-foreground border-t border-border">
         © 2026 Mohamed Mamdouh. Built for Dubai opportunities.
