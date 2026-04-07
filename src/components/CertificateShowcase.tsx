@@ -163,10 +163,14 @@ const CertificateShowcase = () => {
                 <span className="text-sm text-muted-foreground font-medium">({group.certs.length})</span>
               </div>
 
-              <StaggerContainer className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
                 {group.certs.map((cert, ci) => (
-                  <StaggerItem
+                  <motion.div
                     key={`${cert.name}-${ci}`}
+                    initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
                     className={cert.featured ? "sm:col-span-2" : ""}
                   >
                     <button
@@ -199,9 +203,9 @@ const CertificateShowcase = () => {
                         )}
                       </div>
                     </button>
-                  </StaggerItem>
+                  </motion.div>
                 ))}
-              </StaggerContainer>
+              </div>
             </div>
           ))}
         </div>
